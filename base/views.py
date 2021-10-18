@@ -7,7 +7,7 @@ rooms = [
 ]
 
 def home(req):
-    return render(req, 'home.html', {'rooms': rooms})
+    return render(req, 'base/home.html', {'rooms': rooms})
 
 def room(req):
-    return render(req, 'room.html')
+    return render(req, 'base/room.html')
