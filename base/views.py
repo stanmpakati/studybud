@@ -4,7 +4,8 @@ from .models import Room, Topic
 from .forms import RoomForm
 
 def home(req):
-    rooms = Room.objects.all()
+    q = req.GET.get('q') if req.GET.get('q') != None else ''
+    rooms = Room.objects.filter(topic__name__icontains=q)
     topics = Topic.objects.all()
 
     context = {'rooms': rooms, 'topics': topics}
