@@ -1,11 +1,15 @@
 from django.http import request
 from django.shortcuts import redirect, render
-from .models import Room
+from .models import Room, Topic
 from .forms import RoomForm
 
 def home(req):
     rooms = Room.objects.all()
-    return render(req, 'base/home.html', {'rooms': rooms})
+    topics = Topic.objects.all()
+
+    context = {'rooms': rooms, 'topics': topics}
+
+    return render(req, 'base/home.html', context)
 
 def room(req, pk):
     room = Room.objects.get(id=pk)
