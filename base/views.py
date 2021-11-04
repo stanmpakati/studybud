@@ -4,6 +4,10 @@ from django.shortcuts import redirect, render
 from .models import Room, Topic
 from .forms import RoomForm
 
+def loginPage(req):
+    context = {}
+    return render(req, 'base/login_register.html', context)
+
 def home(req):
     q = req.GET.get('q') if req.GET.get('q') != None else ''
     rooms = Room.objects.filter(
